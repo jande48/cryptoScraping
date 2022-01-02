@@ -4,7 +4,7 @@ from scrapy.settings import Settings
 from scrapy.utils.project import get_project_settings
 # from scraper.spiders import TheodoSpider
 from scraper import settings as my_settings
-from scraper.spiders.algorand_spider import AlgorandSpider
+from scraper.spiders.yieldly_spider import YieldlySpider
 
 class Command(BaseCommand):
     help = 'Release spider'
@@ -12,5 +12,5 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         process = CrawlerProcess(get_project_settings())
 
-        process.crawl(AlgorandSpider)
+        process.crawl(YieldlySpider)
         process.start()

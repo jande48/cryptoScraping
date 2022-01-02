@@ -6,7 +6,7 @@ import json
 from properties.models import Property
 from django.utils import timezone
 
-class PropertiesSpider(CrawlSpider):
+class AlgorandSpider(CrawlSpider):
     name = "properties"
     # domain = "finder.com"
     # start_urls=["https://www.finder.com/algorand-price-prediction",]
@@ -19,10 +19,11 @@ class PropertiesSpider(CrawlSpider):
         self.start_urls = [self.url]
         self.allowed_domains = [self.domain]
 
-        PropertiesSpider.rules = [
-           Rule(LinkExtractor(unique=False), callback='parse_item'),
+        AlgorandSpider.rules = [
+           Rule(callback='parse_item', follow=False),
         ]
-        super(PropertiesSpider, self).__init__(*args, **kwargs)
+        # LinkExtractor(unique=False),
+        super(AlgorandSpider, self).__init__(*args, **kwargs)
 
     def parse_item(self, response):
         # You can tweak each crawled page here

@@ -29,7 +29,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost','*']
 
 
 # Application definition
@@ -91,7 +91,7 @@ DATABASES = {
     }
 }
 
-
+CURRENT_SITE_URL=env('CURRENT_SITE_URL')
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -116,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Chicago'
 
 USE_I18N = True
 
@@ -135,3 +135,41 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+CRONJOBS = [
+    (
+        "*/6 * * * *",
+        "django.core.management.call_command",
+        ["algo"],
+    ),
+    (
+        "*/6 * * * *",
+        "django.core.management.call_command",
+        ["yieldly"],
+    ),
+    (
+        "*/5 * * * *",
+        "django.core.management.call_command",
+        ["ratio"],
+    ),
+    # (
+    #     "*/6 * * * *",
+    #     "django.core.management.call_command",
+    #     ["algo"],
+    #     {},
+    #     ">> /Desktop/coding/algorand/logging/cron_log.log 2>&1",
+    # ),
+    # (
+    #     "*/6 * * * *",
+    #     "django.core.management.call_command",
+    #     ["yieldly"],
+    #     {},
+    #     ">> /Desktop/coding/algorand/logging/cron_log.log 2>&1",
+    # ),
+    # (
+    #     "*/5 * * * *",
+    #     "django.core.management.call_command",
+    #     ["ratio"],
+    #     {},
+    #     ">> /Desktop/coding/algorand/logging/cron_log.log 2>&1",
+    # ),
+]

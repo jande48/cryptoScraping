@@ -17,20 +17,8 @@ class Property(models.Model):
 
     def __str__(self):
         return str(self.data)
-    # code = models.CharField(unique=True, max_length=255, null=True)
-    # price = models.CharField(max_length=255, null=True)
-    # location = models.CharField(max_length=255, null=True)
-    # district = models.CharField(max_length=255, null=True)
-    # category = models.CharField(max_length=255, null=True)
-    # status = models.CharField(max_length=255, null=True)
-    # bedrooms = models.CharField(max_length=255, null=True)
-    # bathrooms = models.CharField(max_length=255, null=True)
-    # agent = models.CharField(max_length=255)
-    # agent_contact = PhoneField(blank=True, help_text='Contact phone number')
-    # agent_email = models.EmailField(max_length = 255)
-    # agent_company = models.CharField(max_length=255)
-    # date = models.DateTimeField(default=timezone.now)
-    # name = models.CharField(max_length=255, null=True)
-    # fun_fact = models.CharField(max_length=255, null=True)
-    # def __str__(self):
-    #     return self.code
+
+class YieldlyToAlgoRatio(models.Model):
+    date = models.DateTimeField(default=timezone.now,null=True,blank=True)
+    ratio = models.FloatField(null=True,blank=True) # this stands for our crawled data
+
